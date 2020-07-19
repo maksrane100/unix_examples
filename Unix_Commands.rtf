@@ -1,0 +1,186 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset2 Symbol;}}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Retrieve second, third and fourth field from file\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ cut -d ',' -f 2,3,4  test.txt\par
+
+\pard\sa200\sl276\slmult1 Product,Price,Payment_Type\par
+Product1,1200,Mastercard\par
+Product1,200,Visa\par
+Product1,1000,Mastercard\par
+Product1,800,Visa\par
+Product2,600,Visa\par
+Product1,100,Visa\par
+Product1,40,Mastercard\par
+Product1,20,Mastercard\par
+Product1,60,Mastercard\par
+Product1,80,Visa\par
+Product1,100,Diners\par
+Product1,120,Amex\par
+Product1,140,Mastercard\par
+Product1,160,Visa\par
+Product1,180,Visa\par
+Product1,200,Diners\par
+Product1,220,Visa\par
+Product1,240,Diners\par
+Product2,280,Visa\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Record that has word 'Seema'\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ awk ' $2 ~ /Seema/ \{print NR, $0 \} ' test.txt\par
+7 1/4/20 13:19,Product1,100,Visa,Seema Patil,Mickleton                   ,NJ,United States,9/24/08 15:19,1/4/09 13:04,39.79,-75.23806\par
+19 1/6/14 5:02,Product1,240,Diners,Seema Singh,Hyderabad,Andhra Pradesh,India,1/6/09 2:41,1/6/09 7:52,17.3833333,78.4666667\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Retrieve records from file that is between record that has word 'Leena' and record that has word 'Maria'\par
+
+\pard\sa200\sl276\slmult1\par
+test@DESKTOP-QJ6R6J2:~/unix_test$  awk '/Leena/,/Maria/ \{ print NR, $0 \}' test.txt\par
+17 1/4/14 1:05,Product1,200,Diners,Leena Singh,Julianstown,Meath,Ireland,1/4/09 0:00,1/5/09 13:36,53.6772222,-6.3191667\par
+18 1/5/14 11:37,Product1,220,Visa,Smita Singh,Ottawa,Ontario,Canada,1/5/09 9:35,1/5/09 19:24,45.4166667,-75.7\par
+19 1/6/14 5:02,Product1,240,Diners,Seema Singh,Hyderabad,Andhra Pradesh,India,1/6/09 2:41,1/6/09 7:52,17.3833333,78.4666667\par
+20 1/6/14 7:45,Product2,280,Visa,Maria Joseph,London,England,United Kingdom,1/6/09 7:00,1/6/09 9:17,51.52721,0.14559\par
+test@DESKTOP-QJ6R6J2:~/unix_test$  \par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Retrieve second record\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ awk  'NR==2 \{ print NR, $0 \}' test.txt\par
+2 1/2/19 6:17,Product1,1200,Mastercard,Nitin Patil,Basildon,England,United Kingdom,1/2/09 6:00,1/2/09 6:08,51.5,-1.1166667\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Retrieve records from second record to fifth reccord\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ awk  'NR==2, NR==5 \{ print NR, $0 \}' test.txt\par
+2 1/2/19 6:17,Product1,1200,Mastercard,Nitin Patil,Basildon,England,United Kingdom,1/2/09 6:00,1/2/09 6:08,51.5,-1.1166667\par
+3 1/2/19 4:53,Product1,200,Visa,Amit Patil,Parkville                   ,MO,United States,1/2/09 4:42,1/2/09 7:49,39.195,-94.68194\par
+4 1/2/19 13:08,Product1,1000,Mastercard,Rani Patil,OR,United States,1/1/09 16:21,1/3/09 12:32,46.18806,-123.83\par
+5 1/3/19 14:44,Product1,800,Visa,Ganesh Chaudhari,Victoria,Australia,9/25/05 21:13,1/3/09 14:22,-36.1333333,144.75\par
+\par
+\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Combining fields using awk command\par
+
+\pard\sa200\sl276\slmult1\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk -F',' '\{ print "Transaction time: " $1 " Amount: " $3 " $, using " $4 " by user : " $5 \}' test.txt\par
+Transaction time: Transaction_date Amount: Price $, using Payment_Type by user : Name\par
+Transaction time: 1/2/19 6:17 Amount: 1200 $, using Mastercard by user : Nitin Patil\par
+Transaction time: 1/2/19 4:53 Amount: 200 $, using Visa by user : Amit Patil\par
+Transaction time: 1/2/19 13:08 Amount: 1000 $, using Mastercard by user : Rani Patil\par
+Transaction time: 1/3/19 14:44 Amount: 800 $, using Visa by user : Ganesh Chaudhari\par
+Transaction time: 1/4/19 12:56 Amount: 600 $, using Visa by user : Geeta Patil\par
+Transaction time: 1/4/20 13:19 Amount: 100 $, using Visa by user : Seema Patil\par
+Transaction time: 1/4/20 20:11 Amount: 40 $, using Mastercard by user : Sameer Patil\par
+Transaction time: 1/2/20 20:09 Amount: 20 $, using Mastercard by user : Sunil Patil\par
+Transaction time: 1/4/20 13:17 Amount: 60 $, using Mastercard by user : Manish Patil\par
+Transaction time: 1/4/18 14:11 Amount: 80 $, using Visa by user : Rani Chaudhari\par
+Transaction time: 1/5/18 2:42 Amount: 100 $, using Diners by user : Nitin\par
+Transaction time: 1/5/18 5:39 Amount: 120 $, using Amex by user : Souwmya Patil\par
+Transaction time: 1/2/18 9:16 Amount: 140 $, using Mastercard by user : Ganesh Singh\par
+Transaction time: 1/5/16 10:08 Amount: 160 $, using Visa by user : Sunil Singh\par
+Transaction time: 1/2/14 14:18 Amount: 180 $, using Visa by user : Richa Singh\par
+Transaction time: 1/4/14 1:05 Amount: 200 $, using Diners by user : Leena Singh\par
+Transaction time: 1/5/14 11:37 Amount: 220 $, using Visa by user : Smita Singh\par
+Transaction time: 1/6/14 5:02 Amount: 240 $, using Diners by user : Seema Singh\par
+Transaction time: 1/6/14 7:45 Amount: 280 $, using Visa by user : Maria Joseph\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Find records where price is greater than 600\par
+
+\pard\sa200\sl276\slmult1\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk -F',' '\{ if($3 > 600) print $0;\}' test.txt\par
+Transaction_date,Product,Price,Payment_Type,Name,City,State,Country,Account_Created,Last_Login,Latitude,Longitude\par
+1/2/19 6:17,Product1,1200,Mastercard,Nitin Patil,Basildon,England,United Kingdom,1/2/09 6:00,1/2/09 6:08,51.5,-1.1166667\par
+1/2/19 13:08,Product1,1000,Mastercard,Rani Patil,OR,United States,1/1/09 16:21,1/3/09 12:32,46.18806,-123.83\par
+1/3/19 14:44,Product1,800,Visa,Ganesh Chaudhari,Victoria,Australia,9/25/05 21:13,1/3/09 14:22,-36.1333333,144.75\par
+\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Find records where username contains specific name in it\par
+
+\pard\sa200\sl276\slmult1\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk -F',' '/Rani/ \{print $0;\}' test.txt\par
+1/2/19 13:08,Product1,1000,Mastercard,Rani Patil,OR,United States,1/1/09 16:21,1/3/09 12:32,46.18806,-123.83\par
+1/4/18 14:11,Product1,80,Visa,Rani Chaudhari,Chatou,Ile-de-France,France,6/3/08 4:22,1/5/09 1:17,48.8833333,2.15\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk -F',' '/Seema/ \{print $0;\}' test.txt\par
+1/4/20 13:19,Product1,100,Visa,Seema Patil,Mickleton                   ,NJ,United States,9/24/08 15:19,1/4/09 13:04,39.79,-75.23806\par
+1/6/14 5:02,Product1,240,Diners,Seema Singh,Hyderabad,Andhra Pradesh,India,1/6/09 2:41,1/6/09 7:52,17.3833333,78.4666667\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Changing file delimiter from ',' to '|'\par
+
+\pard\sa200\sl276\slmult1\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk '$1=$1' FS="," OFS="|" test.txt\par
+Transaction_date|Product|Price|Payment_Type|Name|City|State|Country|Account_Created|Last_Login|Latitude|Longitude\par
+1/2/19 6:17|Product1|1200|Mastercard|Nitin Patil|Basildon|England|United Kingdom|1/2/09 6:00|1/2/09 6:08|51.5|-1.1166667\par
+1/2/19 4:53|Product1|200|Visa|Amit Patil|Parkville                   |MO|United States|1/2/09 4:42|1/2/09 7:49|39.195|-94.68194\par
+1/2/19 13:08|Product1|1000|Mastercard|Rani Patil|OR|United States|1/1/09 16:21|1/3/09 12:32|46.18806|-123.83\par
+1/3/19 14:44|Product1|800|Visa|Ganesh Chaudhari|Victoria|Australia|9/25/05 21:13|1/3/09 14:22|-36.1333333|144.75\par
+1/4/19 12:56|Product2|600|Visa|Geeta Patil|Cahaba Heights              |AL|United States|11/15/08 15:47|1/4/09 12:45|33.52056|-86.8025\par
+1/4/20 13:19|Product1|100|Visa|Seema Patil|Mickleton                   |NJ|United States|9/24/08 15:19|1/4/09 13:04|39.79|-75.23806\par
+1/4/20 20:11|Product1|40|Mastercard|Sameer Patil|Peoria                      |IL|United States|1/3/09 9:38|1/4/09 19:45|40.69361|-89.58889\par
+1/2/20 20:09|Product1|20|Mastercard|Sunil Patil|Martin                      |TN|United States|1/2/09 17:43|1/4/09 20:01|36.34333|-88.85028\par
+1/4/20 13:17|Product1|60|Mastercard|Manish Patil|Tel Aviv|Tel Aviv|Israel|1/4/09 13:03|1/4/09 22:10|32.0666667|34.7666667\par
+1/4/18 14:11|Product1|80|Visa|Rani Chaudhari|Chatou|Ile-de-France|France|6/3/08 4:22|1/5/09 1:17|48.8833333|2.15\par
+1/5/18 2:42|Product1|100|Diners|Nitin|New York                    |NY|United States|1/5/09 2:23|1/5/09 4:59|40.71417|-74.00639\par
+1/5/18 5:39|Product1|120|Amex|Souwmya Patil|Eindhoven|Noord-Brabant|Netherlands|1/5/09 4:55|1/5/09 8:15|51.45|5.4666667\par
+1/2/18 9:16|Product1|140|Mastercard|Ganesh Singh|Shavano Park                |TX|United States|1/2/09 8:32|1/5/09 9:05|29.42389|-98.49333\par
+1/5/16 10:08|Product1|160|Visa|Sunil Singh|Eagle                       |ID|United States|11/11/08 15:53|1/5/09 10:05|43.69556|-116.35306\par
+1/2/14 14:18|Product1|180|Visa|Richa Singh|Riverside                   |NJ|United States|12/9/08 12:07|1/5/09 11:01|40.03222|-74.95778\par
+1/4/14 1:05|Product1|200|Diners|Leena Singh|Julianstown|Meath|Ireland|1/4/09 0:00|1/5/09 13:36|53.6772222|-6.3191667\par
+1/5/14 11:37|Product1|220|Visa|Smita Singh|Ottawa|Ontario|Canada|1/5/09 9:35|1/5/09 19:24|45.4166667|-75.7\par
+1/6/14 5:02|Product1|240|Diners|Seema Singh|Hyderabad|Andhra Pradesh|India|1/6/09 2:41|1/6/09 7:52|17.3833333|78.4666667\par
+1/6/14 7:45|Product2|280|Visa|Maria Joseph|London|England|United Kingdom|1/6/09 7:00|1/6/09 9:17|51.52721|0.14559\par
+\par
+\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Couting how many times word occurring in file\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ awk '/Nitin/\{++cnt\} END \{print "Count = ", cnt\}' test.txt\par
+Count =  2\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ awk '/Rani/\{++cnt\} END \{print "Count = ", cnt\}' test.txt\par
+Count =  2\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ \par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Finding word in file\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ grep -i 'Rani' *\par
+1/2/19 13:08,Product1,1000,Mastercard,Rani Patil,OR,United States,1/1/09 16:21,1/3/09 12:32,46.18806,-123.83\par
+1/4/18 14:11,Product1,80,Visa,Rani Chaudhari,Chatou,Ile-de-France,France,6/3/08 4:22,1/5/09 1:17,48.8833333,2.15\par
+test@DESKTOP-QJ6R6J2:~/unix_test$ grep -i 'Amit' *\par
+1/2/19 4:53,Product1,200,Visa,Amit Patil,Parkville                   ,MO,United States,1/2/09 4:42,1/2/09 7:49,39.195,-94.68194\par
+test@DESKTOP-QJ6R6J2:~/unix_test$   \par
+\par
+\par
+\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Formatting a file using awk\par
+
+\pard\sa200\sl276\slmult1 test@DESKTOP-QJ6R6J2:~/unix_test$ awk  -F "," 'NR>1 \{print "Product Name: " $2 ", Price: $" $3 ", Credit Card: " $4\}' test.txt\par
+Product Name: Product1, Price: $1200, Credit Card: Mastercard\par
+Product Name: Product1, Price: $200, Credit Card: Visa\par
+Product Name: Product1, Price: $1000, Credit Card: Mastercard\par
+Product Name: Product1, Price: $800, Credit Card: Visa\par
+Product Name: Product2, Price: $600, Credit Card: Visa\par
+Product Name: Product1, Price: $100, Credit Card: Visa\par
+Product Name: Product1, Price: $40, Credit Card: Mastercard\par
+Product Name: Product1, Price: $20, Credit Card: Mastercard\par
+Product Name: Product1, Price: $60, Credit Card: Mastercard\par
+Product Name: Product1, Price: $80, Credit Card: Visa\par
+Product Name: Product1, Price: $100, Credit Card: Diners\par
+Product Name: Product1, Price: $120, Credit Card: Amex\par
+Product Name: Product1, Price: $140, Credit Card: Mastercard\par
+Product Name: Product1, Price: $160, Credit Card: Visa\par
+Product Name: Product1, Price: $180, Credit Card: Visa\par
+Product Name: Product1, Price: $200, Credit Card: Diners\par
+Product Name: Product1, Price: $220, Credit Card: Visa\par
+Product Name: Product1, Price: $240, Credit Card: Diners\par
+Product Name: Product2, Price: $280, Credit Card: Visa\par
+}
+ 
